@@ -1,5 +1,9 @@
 <ul>
   <% @posts.each do |post| %>
-    <li><%= post.title %> <%= post.url ? " (#{post.url})" : "" %></li>
+    <% if post.post_type == "url" %>
+      <li><%= link_to post.title, post.url %> <%= " (#{post.url})" %></li>
+    <% elsif post.post_type == "question" %>
+      <li>Ask HN: <%= link_to post.title, post_path(post) %></li>
+    <% end %>
   <% end %>
 </ul>

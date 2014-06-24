@@ -3,7 +3,7 @@ HackerNewsClone::Application.routes.draw do
   resources :user, only: [:show] do
     resources :posts
   end
-  resources :posts, only: [:index]
+  resources :posts, only: [:index, :show]
 
   root to: "posts#index"
 end
