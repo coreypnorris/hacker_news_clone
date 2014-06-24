@@ -3,4 +3,6 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :url, :unless => :question?
   validates_presence_of :question, :unless => :url?
+
+  belongs_to :user
 end
