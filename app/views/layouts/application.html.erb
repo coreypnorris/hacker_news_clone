@@ -12,6 +12,9 @@
       <div class="navbar-header">
         <%= link_to "Homepage", root_path, :class => "navbar-brand" %>
       </div>
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Submit", new_user_post_path(current_user) %></li>
+      </ul>
 
 
       <div class="nav navbar-nav pull-right">
