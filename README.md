@@ -6,3 +6,4 @@
 
 * Users can create accounts with a username and can log in.
 * Users can view all the posts on the homepage
+* Users can submit a question or link
