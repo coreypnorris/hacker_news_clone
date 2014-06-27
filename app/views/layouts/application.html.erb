@@ -9,6 +9,7 @@
 <body>
   <nav class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container">
+
       <div class="navbar-header">
         <%= link_to "Haxor News", root_path, :class => "navbar-brand" %>
       </div>
@@ -17,7 +18,6 @@
           <li><%= link_to "submit", new_user_post_path(current_user) %></li>
         <% end %>
       </ul>
-
 
       <div class="pull-right">
         <ul class="nav navbar-nav">
@@ -33,13 +33,20 @@
     </div>
   </nav>
 
-    <div class="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: "flash_#{name}" %>
-      <% end %>
-      <%= yield %>
-    </div>
-
+  <div class="container">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, id: "flash_#{name}" %>
+    <% end %>
+    <%= yield %>
   </div>
+
+  <footer>
+    <div class="foot-fixed-bottom">
+      <div class="container">
+        <hr />
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
