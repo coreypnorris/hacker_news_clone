@@ -10,24 +10,25 @@
   <nav class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
-        <%= link_to "Homepage", root_path, :class => "navbar-brand" %>
+        <%= link_to "Haxor News", root_path, :class => "navbar-brand" %>
       </div>
       <ul class="nav navbar-nav">
         <% if current_user %>
-          <li><%= link_to "Submit", new_user_post_path(current_user) %></li>
+          <li><%= link_to "submit", new_user_post_path(current_user) %></li>
         <% end %>
       </ul>
 
 
-      <div class="nav navbar-nav pull-right">
-        <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.username %></strong>.
-          <%= link_to "Edit profile", edit_user_registration_path %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> |
-          <%= link_to "Sign in", new_user_session_path %>
-        <% end %>
+      <div class="pull-right">
+        <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+            <li><%= link_to current_user.username, edit_user_registration_path %></li>
+            <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "sign up", new_user_registration_path %></li>
+            <li><%= link_to "sign in", new_user_session_path %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </nav>
