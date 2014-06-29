@@ -13,10 +13,10 @@ class PostsController < ApplicationController
     @post = Post.new post_params
     if @post.save
       current_user.posts << @post
-      flash[:notice] = "Your post has been saved."
+      flash[:success] = "Your post has been submitted."
       redirect_to root_url
     else
-      flash[:alert] = "Something went wrong. Please try to save your post again."
+      flash[:danger] = "Something went wrong. Please try to save your post again."
       render 'new'
     end
   end
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update post_params
-      flash[:notice] = "Your post has been changed."
+      flash[:success] = "Your post has been changed."
       redirect_to post_path @post
     else
       render 'edit'
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    flash[:notice] = "Your post has been removed."
+    flash[:danger] = "Your post has been removed."
     redirect_to posts_path
   end
 
