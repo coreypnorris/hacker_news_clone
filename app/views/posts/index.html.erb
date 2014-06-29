@@ -3,7 +3,7 @@
     <% @posts.each do |post| %>
       <% if post.post_type == "url" %>
         <tr>
-          <td><%= link_to post.title, post.url %> <%= " (#{post.url})" %></td>
+          <td><%= link_to post.title, post.url %> <%= " (#{post.hackify})" %></td>
         </tr>
         <tr>
           <td class="subtext">by <%= link_to post.user.username, user_path(post.user) %></td>
@@ -13,8 +13,8 @@
         <td>Ask HN: <%= link_to post.title, post_path(post) %></td>
       </tr>
       <tr>
-          <td class="subtext">by <%= link_to post.user.username, user_path(post.user) %></td>
-        </tr>
+        <td class="subtext">by <%= link_to post.user.username, user_path(post.user) %></td>
+      </tr>
       <% end %>
     <% end %>
   </tbody>
