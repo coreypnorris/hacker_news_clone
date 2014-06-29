@@ -14,4 +14,14 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def hackify
+    if url.include? "http:"
+      url.slice!('http://www.')
+      return url.split("/").shift
+    elsif url.include? "https:"
+      url.slice!('https://www.')
+      return url.split("/").shift
+    end
+  end
+
 end
