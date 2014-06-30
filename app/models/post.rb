@@ -40,4 +40,12 @@ class Post < ActiveRecord::Base
     return false
   end
 
+  def score
+    if votes.count == 1
+      return "#{votes.count} point"
+    else
+      return "#{votes.count} points"
+    end
+  end
+
 end

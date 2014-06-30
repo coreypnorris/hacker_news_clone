@@ -11,7 +11,9 @@
         <% end %>
         <%= link_to post.title, post.url %> <%= " (#{post.hackify})" %>
       </li>
-      <p class="subtext">by <%= link_to post.user.username, user_path(post.user) %></p>
+      <p class="subtext">
+        <%= post.score %> by <%= link_to post.user.username, user_path(post.user) %>
+      </p>
     <% elsif post.post_type == "question" %>
       <li>Ask HN: <%= link_to post.title, post_path(post) %></li>
       <p class="subtext">by <%= link_to post.user.username, user_path(post.user) %><p>
