@@ -2,7 +2,13 @@
   <% @posts.each do |post| %>
     <% if post.post_type == "url" %>
       <li>
-        <span class="glyphicon glyphicon-chevron-up"></span>
+        <% if !current_user %>
+          <%= link_to "", new_user_registration_path, class: "glyphicon glyphicon-chevron-up" %>
+        <% elsif post.upvoted?(current_user) %>
+
+        <% else %>
+          <%= link_to "", new_post_vote_path(post), class: "glyphicon glyphicon-chevron-up" %>
+        <% end %>
         <%= link_to post.title, post.url %> <%= " (#{post.hackify})" %>
       </li>
       <p class="subtext">by <%= link_to post.user.username, user_path(post.user) %></p>

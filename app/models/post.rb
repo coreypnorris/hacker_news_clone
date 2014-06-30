@@ -31,4 +31,13 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def upvoted?(current_user)
+    votes.each do |vote|
+      if vote.user == current_user
+        return true
+      end
+    end
+    return false
+  end
+
 end
