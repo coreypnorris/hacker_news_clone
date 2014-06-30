@@ -1,21 +1,11 @@
-<table border="0" cellpadding="0" cellspacing="0">
-  <tbody>
-    <% @posts.each do |post| %>
-      <% if post.post_type == "url" %>
-        <tr>
-          <td><%= link_to post.title, post.url %> <%= " (#{post.hackify})" %></td>
-        </tr>
-        <tr>
-          <td class="subtext">by <%= link_to post.user.username, user_path(post.user) %></td>
-        </tr>
-      <% elsif post.post_type == "question" %>
-      <tr>
-        <td>Ask HN: <%= link_to post.title, post_path(post) %></td>
-      </tr>
-      <tr>
-        <td class="subtext">by <%= link_to post.user.username, user_path(post.user) %></td>
-      </tr>
-      <% end %>
+<ol>
+  <% @posts.each do |post| %>
+    <% if post.post_type == "url" %>
+      <li><%= link_to post.title, post.url %> <%= " (#{post.hackify})" %></li>
+      <p class="subtext">by <%= link_to post.user.username, user_path(post.user) %></p>
+    <% elsif post.post_type == "question" %>
+      <li>Ask HN: <%= link_to post.title, post_path(post) %></li>
+      <p class="subtext">by <%= link_to post.user.username, user_path(post.user) %><p>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+</ol>
