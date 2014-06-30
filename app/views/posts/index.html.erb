@@ -1,7 +1,10 @@
 <ol>
   <% @posts.each do |post| %>
     <% if post.post_type == "url" %>
-      <li><%= link_to post.title, post.url %> <%= " (#{post.hackify})" %></li>
+      <li>
+        <span class="glyphicon glyphicon-chevron-up"></span>
+        <%= link_to post.title, post.url %> <%= " (#{post.hackify})" %>
+      </li>
       <p class="subtext">by <%= link_to post.user.username, user_path(post.user) %></p>
     <% elsif post.post_type == "question" %>
       <li>Ask HN: <%= link_to post.title, post_path(post) %></li>
