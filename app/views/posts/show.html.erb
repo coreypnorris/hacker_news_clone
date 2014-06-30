@@ -3,3 +3,14 @@
   <%= @post.score %> by <%= link_to @post.user.username, user_path(@post.user) %>
   <p>
 <p><%= @post.question %></p>
+
+<ul>
+  <% @post.comments.each do |post_comment| %>
+    <li><%= post_comment.content %></li>
+    <ul>
+      <% post_comment.comments.each do |comment_comment| %>
+        <li><%= comment_comment.content %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>
