@@ -1,0 +1,5 @@
+<p>Ask HN: <%= link_to @post.title, post_path(@post) %></p>
+<p class="subtext">
+  <%= @post.score %> by <%= link_to @post.user.username, user_path(@post.user) %>
+  <p>
+<p><%= @post.question %></p>

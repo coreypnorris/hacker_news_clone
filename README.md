@@ -8,3 +8,4 @@
 * Users can view all the posts on the homepage
 * Users can submit a question or link
 * Users can upvote submitted links
+* Users can upvote submitted questions
