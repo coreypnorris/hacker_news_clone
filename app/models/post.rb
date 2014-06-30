@@ -40,6 +40,14 @@ class Post < ActiveRecord::Base
     return false
   end
 
+  def posted_by?(current_user)
+    if user == current_user
+      return true
+    else
+      return false
+    end
+  end
+
   def score
     if votes.count == 1
       return "#{votes.count} point"

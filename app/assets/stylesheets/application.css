@@ -16,3 +16,18 @@
 body {
   background-image: url("background.png");
 }
+
+.navbar {
+  background-image: url("background_header.png");
+}
+
+.navbar a {
+  color: black !important;
+}
+
+a:link    { color:#000000; text-decoration:none; }
+
+a:visited {
+color: #828282;
+text-decoration: none;
+}
