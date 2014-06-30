@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :question, :unless => :url?
 
   belongs_to :user
+  has_many :votes
 
   def post_type
     if question.strip.length == 0
