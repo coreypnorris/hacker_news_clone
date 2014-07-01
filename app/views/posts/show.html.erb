@@ -19,7 +19,7 @@
 <p><%= @post.question %></p>
 
 
-<%= render "/posts/form", object: @post, object: @comment %>
+<%= render "/posts/post_comment_form", object: @post, object: @comment %>
 <br>
 <br>
 
@@ -27,7 +27,8 @@
   <p class="subtext"><%= link_to post_comment.user.username, user_path(post_comment.user) %> <%= time_ago_in_words(post_comment.created_at) %> ago |
     <%= link_to "link", comment_path(post_comment) %>
   </p>
-  <%= post_comment.content %>
+  <p><%= post_comment.content %></p>
+  <u><%= link_to "reply", new_comment_comment_path(post_comment) %></u>
     <% post_comment.comments.each do |comment_comment| %>
       <%= comment_comment.content %>
     <% end %>

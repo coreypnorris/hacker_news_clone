@@ -9,7 +9,8 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment = Comment.new
+    @parent_comment = Comment.find(params[:comment_id])
+    @new_comment = Comment.new
   end
 
   def create
