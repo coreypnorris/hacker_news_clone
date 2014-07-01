@@ -10,7 +10,7 @@ HackerNewsClone::Application.routes.draw do
   end
 
   resources :comments, only: [:create, :show] do
-    resources :comments, only: [:create]
+    resources :comments, only: [:new, :create]
   end
 
   root to: "posts#index"
