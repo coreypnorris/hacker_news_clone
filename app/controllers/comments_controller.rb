@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
     @new_comment = Comment.new(comment_params)
     if @new_comment.save
       current_user.comments << @new_comment
+
       if params[:post_id]
         @parent_post = Post.find(params[:post_id])
         @parent_post.comments << @new_comment

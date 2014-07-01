@@ -1,0 +1,13 @@
+<p class="subtext"><%= link_to @parent_comment.user.username, user_path(@parent_comment.user) %> <%= time_ago_in_words(@parent_comment.created_at) %> ago |
+  <%= link_to "link", comment_path(@parent_comment) %>
+</p>
+<p><%= @parent_comment.content %></p>
+
+<%= form_for([@parent_comment, @new_comment]) do |f| %>
+  <p>
+    <%= f.text_area :content, :rows => "6", :cols => "60" %>
+  </p>
+  <p>
+    <%= f.submit "reply" %>
+  </p>
+<% end %>

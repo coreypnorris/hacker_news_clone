@@ -28,7 +28,7 @@
     <%= link_to "link", comment_path(post_comment) %>
   </p>
   <p><%= post_comment.content %></p>
-  <u><%= link_to "reply", new_comment_comment_path(post_comment) %></u>
+  <p><u><%= link_to "reply", new_comment_comment_path(post_comment) %></u></p>
     <% post_comment.comments.each do |comment_comment| %>
       <%= comment_comment.content %>
     <% end %>
