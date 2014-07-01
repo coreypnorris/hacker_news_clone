@@ -15,13 +15,22 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
-    @post = Post.find(params[:post_id])
-    if @comment.save
-      @post.comments << @comment
-      current_user.comments << @comment
+    @new_comment = Comment.new(comment_params)
+    if @new_comment.save
+      current_user.comments << @new_comment
+      if params[:post_id]
+        @parent_post = Post.find(params[:post_id])
+        @parent_post.comments << @new_comment
+      elsif params[:comment_id]
+        @parent_comment = Comment.find(params[:comment_id])
+        @parent_comment.comments << @new_comment
+      end
       flash.now[:notice] = "Your comment has been submitted."
-      redirect_to post_path(@post)
+      if @parent_post
+        redirect_to post_path(@parent_post)
+      else
+        redirect_to post_path(@parent_comment.commentable)
+      end
     else
       flash.now[:alert] = "Something went wrong. Please try to save your comment again."
       render 'new'
