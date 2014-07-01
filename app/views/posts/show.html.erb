@@ -9,7 +9,7 @@
   <% if @post.post_type == "url" %>
     <%= link_to @post.title, @post.url %> <span class="comhead"><%= " (#{@post.hackify})" %></span>
   <% elsif @post.post_type == "question" %>
-    <%= link_to "Ask HN: #{post.title}", post_path(@post) %>
+    <%= link_to "Ask HN: #{@post.title}", post_path(@post) %>
   <% end %>
 </p>
 <p class="subtext">
