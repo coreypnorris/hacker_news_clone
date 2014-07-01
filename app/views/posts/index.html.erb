@@ -12,7 +12,9 @@
         <%= link_to post.title, post.url %> <span class="comhead"><%= " (#{post.hackify})" %></span>
       </li>
       <p class="subtext">
-        <%= post.score %> by <%= link_to post.user.username, user_path(post.user) %>
+        <%= post.score %> by <%= link_to post.user.username, user_path(post.user) %> <%= time_ago_in_words(post.created_at) %> ago |
+        <%= link_to "#{post.comments.count} comments", post_path(post) %>
+
       </p>
     <% elsif post.post_type == "question" %>
       <li>
@@ -26,7 +28,8 @@
         <%= link_to "Ask HN: #{post.title}", post_path(post) %>
       </li>
       <p class="subtext">
-        <%= post.score %> by <%= link_to post.user.username, user_path(post.user) %> by <%= link_to post.user.username, user_path(post.user) %>
+        <%= post.score %> by <%= link_to post.user.username, user_path(post.user) %> <%= time_ago_in_words(post.created_at) %> ago |
+        <%= link_to "#{post.comments.count} comments", post_path(post) %>
       <p>
     <% end %>
   <% end %>

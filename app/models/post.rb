@@ -56,5 +56,12 @@ class Post < ActiveRecord::Base
       return "#{votes.count} points"
     end
   end
-
 end
+
+
+
+
+
+
+
+
