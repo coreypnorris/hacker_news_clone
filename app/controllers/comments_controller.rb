@@ -9,11 +9,13 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new comment_params
+    @comment = Comment.new(comment_params)
+    @post = Post.find(params[:post_id])
     if @comment.save
+      @post.comments << @comment
       current_user.comments << @comment
       flash.now[:notice] = "Your comment has been submitted."
-      redirect_to root_url
+      redirect_to post_path(@post)
     else
       flash.now[:alert] = "Something went wrong. Please try to save your comment again."
       render 'new'
