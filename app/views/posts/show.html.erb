@@ -17,15 +17,17 @@
 <p>
 <p><%= @post.question %></p>
 
+
 <%= render "/posts/form", object: @post, object: @comment %>
 
-<ul>
-  <% @post.comments.each do |post_comment| %>
-    <li><%= post_comment.content %></li>
-    <ul>
-      <% post_comment.comments.each do |comment_comment| %>
-        <li><%= comment_comment.content %></li>
-      <% end %>
-    </ul>
-  <% end %>
-</ul>
+
+<% @post.comments.each do |post_comment| %>
+  <p class="subtext"><%= link_to post_comment.user.username, user_path(post_comment.user) %> <%= time_ago_in_words(post_comment.created_at) %> ago |
+    <%= link_to "link", comment_path(post_comment) %>
+  </p>
+  <%= post_comment.content %>
+    <% post_comment.comments.each do |comment_comment| %>
+      <%= comment_comment.content %>
+    <% end %>
+<% end %>
+
