@@ -32,8 +32,8 @@ class CommentsController < ApplicationController
         redirect_to post_path(@parent_comment.commentable)
       end
     else
-      flash[:alert] = "Something went wrong. Please try to save your comment again."
-      render 'new'
+      flash[:error] = "Something went wrong. Please try to save your comment again."
+      redirect_to :back
     end
   end
 
