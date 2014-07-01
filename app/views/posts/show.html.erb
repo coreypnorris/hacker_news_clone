@@ -20,7 +20,8 @@
 
 
 <%= render "/posts/form", object: @post, object: @comment %>
-
+<br>
+<br>
 
 <% @post.comments.each do |post_comment| %>
   <p class="subtext"><%= link_to post_comment.user.username, user_path(post_comment.user) %> <%= time_ago_in_words(post_comment.created_at) %> ago |
