@@ -1,7 +1,8 @@
 <p>Ask HN: <%= link_to @post.title, post_path(@post) %></p>
 <p class="subtext">
-  <%= @post.score %> by <%= link_to @post.user.username, user_path(@post.user) %>
-  <p>
+  <%= @post.score %> by <%= link_to @post.user.username, user_path(@post.user) %> <%= time_ago_in_words(@post.created_at) %> ago |
+  <%= link_to "#{@post.comments.count} comments", post_path(@post) %>
+<p>
 <p><%= @post.question %></p>
 
 <ul>
