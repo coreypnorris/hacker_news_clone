@@ -56,6 +56,12 @@ class Post < ActiveRecord::Base
       return "#{votes.count} points"
     end
   end
+
+  def all_comments
+    parent_comments = Comment.where(:commentable_id => id)
+    child_comments = Comment.where(:commentable_id => parent_comments.map(&:id))
+    parent_comments.count + child_comments.count
+  end
 end
 
 
