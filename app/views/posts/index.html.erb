@@ -8,18 +8,14 @@
       <% else %>
         <%= link_to "", new_post_vote_path(post), class: "glyphicon glyphicon-chevron-up" %>
       <% end %>
-      <%= link_to post.title, post.url %> <span class="comhead"><%= " (#{post.hackify})" %></span>
-    </li>
     <% if post.post_type == "url" %>
-      <p class="subtext">
-        <%= post.score %> by <%= link_to post.user.username, user_path(post.user) %> <%= time_ago_in_words(post.created_at) %> ago |
-        <%= link_to "#{post.comments.count} comments", post_path(post) %>
-      </p>
+      <%= link_to post.title, post.url %> <span class="comhead"><%= " (#{post.hackify})" %></span></li>
     <% elsif post.post_type == "question" %>
-      <p class="subtext">
-        <%= post.score %> by <%= link_to post.user.username, user_path(post.user) %> <%= time_ago_in_words(post.created_at) %> ago |
-        <%= link_to "#{post.comments.count} comments", post_path(post) %>
-      <p>
+      <%= link_to "Ask HN: #{post.title}", post_path(post) %></li>
     <% end %>
+    <p class="subtext">
+      <%= post.score %> by <%= link_to post.user.username, user_path(post.user) %> <%= time_ago_in_words(post.created_at) %> ago |
+      <%= link_to "#{post.comments.count} comments", post_path(post) %>
+    <p>
   <% end %>
 </ol>
