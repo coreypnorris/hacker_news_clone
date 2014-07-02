@@ -58,16 +58,8 @@ class Post < ActiveRecord::Base
   end
 
   def all_comments
-    parent_comments = Comment.where(:commentable_id => id)
+    parent_comments = Comment.where(:commentable_id => id, :commentable_type => "Post")
     child_comments = Comment.where(:commentable_id => parent_comments.map(&:id))
-    parent_comments.count + child_comments.count
+    parent_comments + child_comments
   end
 end
-
-
-
-
-
-
-
-

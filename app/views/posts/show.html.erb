@@ -14,7 +14,7 @@
 </p>
 <p class="subtext">
   <%= @post.score %> by <%= link_to @post.user.username, user_path(@post.user) %> <%= time_ago_in_words(@post.created_at) %> ago |
-  <%= link_to "#{@post.all_comments} comments", post_path(@post) %>
+  <%= link_to "#{@post.comments.count} comments", post_path(@post) %>
 <p>
 <p><%= @post.question %></p>
 
@@ -22,15 +22,6 @@
 <%= render "/posts/post_comment_form", object: @post, object: @comment %>
 <br>
 <br>
-
-<% @post.comments.each do |post_comment| %>
-  <p class="subtext"><%= link_to post_comment.user.username, user_path(post_comment.user) %> <%= time_ago_in_words(post_comment.created_at) %> ago |
-    <%= link_to "link", comment_path(post_comment) %>
-  </p>
-  <p><%= post_comment.content %></p>
-  <p><u><%= link_to "reply", new_comment_comment_path(post_comment) %></u></p>
-    <% post_comment.comments.each do |comment_comment| %>
-      <%= comment_comment.content %>
-    <% end %>
-<% end %>
-
+<ol>
+  <%= render @post.comments %>
+</ol>
