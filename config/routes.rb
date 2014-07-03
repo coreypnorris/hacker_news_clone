@@ -10,6 +10,7 @@ HackerNewsClone::Application.routes.draw do
   end
 
   resources :comments, only: [:new, :create, :show] do
+    resources :votes, only: [:new, :create]
     resources :comments, only: [:new, :create]
   end
 
