@@ -48,4 +48,21 @@ class Comment < ActiveRecord::Base
   def self.find_commentable(commentable_str, commentable_id)
     commentable_str.constantize.find(commentable_id)
   end
+
+  def upvoted_by?(current_user)
+    votes.each do |vote|
+      if vote.user == current_user
+        return true
+      end
+    end
+    return false
+  end
+
+  def posted_by?(current_user)
+    if user == current_user
+      return true
+    else
+      return false
+    end
+  end
 end
