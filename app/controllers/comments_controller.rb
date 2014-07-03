@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!, only: [:create]
 
   def new
     @comment = Comment.new(:parent_id => params[:parent_id])
