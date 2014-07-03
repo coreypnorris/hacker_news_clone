@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :question, :unless => :url?
 
   belongs_to :user
-  has_many :votes
+  has_many :votes, :as => :voteable
   has_many :comments, :as => :commentable
 
   def post_type

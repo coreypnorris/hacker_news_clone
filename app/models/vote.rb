@@ -2,6 +2,7 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :post, :counter_cache => true
   belongs_to :comment
+  belongs_to :voteable, polymorphic: true
 
   before_save :update_counters
   private

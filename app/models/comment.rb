@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commentable, :polymorphic => true
   has_many :comments, :as => :commentable
-  # has_many :votes
+  has_many :votes, :as => :voteable
 
   # NOTE: Comments belong to a user
   belongs_to :user
