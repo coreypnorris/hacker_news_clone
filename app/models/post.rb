@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  acts_as_commentable
   validates :title, :presence => true
 
   validates_presence_of :url, :unless => :question?
