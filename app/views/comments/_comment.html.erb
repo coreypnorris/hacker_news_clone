@@ -1,0 +1,10 @@
+<p class="subtext"><%= link_to comment.user.username, user_path(comment.user) %> <%= time_ago_in_words(comment.created_at) %> ago |
+  <%= link_to "link", comment_path(comment) %>
+</p>
+<div class="content">
+  <li><%= comment.body %></li>
+</div>
+<p><u><%= link_to "reply", new_comment_path(:parent_id => comment) %></u></p>
+
+
+<div class="nested_comments"> <%= render comment.children %></div>
