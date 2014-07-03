@@ -1,3 +1,10 @@
+<% if @comment.parent %>
+  <p class="subtext"><%= link_to @comment.parent.user.username, user_path(@comment.parent.user) %> <%= time_ago_in_words(@comment.parent.created_at) %> ago |
+    <%= link_to "link", comment_path(@comment.parent) %>
+  </p>
+  <p><%= @comment.parent.body %></p>
+<% end %>
+
 <%= form_for(@comment) do |f| %>
   <%= f.hidden_field :parent_id %>
   <p>
