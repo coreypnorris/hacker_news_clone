@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise'
 gem 'ancestry'
+gem 'acts_as_commentable_with_threading'
 
 
 group :development do
