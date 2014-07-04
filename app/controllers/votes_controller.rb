@@ -2,8 +2,8 @@ class VotesController < ApplicationController
   def new
     @vote = Post.find(params[:post_id]).votes.new if params[:post_id]
     @vote = Comment.find(params[:comment_id]).votes.new if params[:comment_id]
+    @vote.user = current_user
     if @vote.save
-      @vote.user = current_user
       flash[:notice] = "Your vote has been submitted."
       redirect_to :back
     else
