@@ -2,10 +2,7 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @posts = Post.find(:all, :include => :votes, :order => "votes_count DESC")
-    @posts.each do |post|
-      post.reload
-    end
+    @posts = Post.all.order("votes_count DESC").page(params[:page]).per_page(5)
   end
 
   def new
