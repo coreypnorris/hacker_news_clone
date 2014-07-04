@@ -23,5 +23,5 @@
 <br>
 <br>
 <ol>
-  <%= render @post.root_comments %>
+  <%= render @post.root_comments.order("votes_count DESC") %>
 </ol>
