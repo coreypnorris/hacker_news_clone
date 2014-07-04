@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'devise'
 gem 'ancestry'
 gem 'acts_as_commentable_with_threading'
+gem 'will_paginate'
 
 
 group :development do
