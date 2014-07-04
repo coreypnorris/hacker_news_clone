@@ -20,7 +20,7 @@ Post.create(:title => "dogpile", :url => "http://www.dogpile.com/", :question =>
 Post.create(:title => "duckduckgo", :url => "https://duckduckgo.com/", :question => "", :user_id => 5)
 Post.create(:title => "ixquick", :url => "https://www.ixquick.com/", :question => "", :user_id => 6)
 
-Post.create(:title => "Help Andy", :question => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", :url => "", :user_id => 1)
+help_andy = Post.create(:title => "Help Andy", :question => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", :url => "", :user_id => 1)
 Post.create(:title => "Help Terry", :question => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", :url => "", :user_id => 2)
 Post.create(:title => "Help Joe", :question => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", :url => "", :user_id => 3)
 Post.create(:title => "Help Leona", :question => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", :url => "", :user_id => 4)
@@ -46,3 +46,10 @@ joe_comment.move_to_child_of(terry_comment)
 leona_comment.move_to_child_of(joe_comment)
 mai_comment.move_to_child_of(leona_comment)
 yuri_comment.move_to_child_of(mai_comment)
+
+Comment.build_from( help_andy, andy.id, "My name is Andy" ).save
+Comment.build_from( help_andy, terry.id, "My name is Terry" ).save
+Comment.build_from( help_andy, joe.id, "My name is Joe" ).save
+Comment.build_from( help_andy, leona.id, "My name is Leona" ).save
+Comment.build_from( help_andy, mai.id, "My name is Mai" ).save
+Comment.build_from( help_andy, yuri.id, "My name is Yuri" ).save
