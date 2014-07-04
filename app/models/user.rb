@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
   validates_presence_of :username
 
   has_many :posts
-  has_many :votes
-  has_many :comments
+  has_many :votes, :as => :voteable
+  has_many :comments, :as => :commentable
 end

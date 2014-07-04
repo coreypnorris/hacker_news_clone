@@ -65,4 +65,12 @@ class Comment < ActiveRecord::Base
       return false
     end
   end
+
+  def score
+    if votes.count == 1
+      return "#{votes.count} point"
+    else
+      return "#{votes.count} points"
+    end
+  end
 end
