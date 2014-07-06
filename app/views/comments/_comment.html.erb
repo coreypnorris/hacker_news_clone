@@ -4,7 +4,7 @@
   <% elsif comment.upvoted_by?(current_user) || comment.posted_by?(current_user) %>
 
   <% else %>
-    <%= link_to "", new_comment_vote_path(comment), class: "glyphicon glyphicon-chevron-up" %>
+    <%= link_to "", comment_votes_path(comment), method: :post, class: "glyphicon glyphicon-chevron-up" %>
   <% end %>
 
   <%= comment.score %> <%= link_to comment.user.username, user_path(comment.user) %> <%= time_ago_in_words(comment.created_at) %> ago |
