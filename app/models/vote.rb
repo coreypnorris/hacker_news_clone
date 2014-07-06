@@ -6,6 +6,8 @@ class Vote < ActiveRecord::Base
 
   before_save :update_post_counters
   before_save :update_comment_counters
+  before_save :rerank
+
   private
     def update_post_counters
       if voteable_type == "Post"
@@ -26,6 +28,16 @@ class Vote < ActiveRecord::Base
           old_comment = Comment.find self.voteable_id_was
           Comment.decrement_counter(:votes_count, old_comment)
         end
+      end
+    end
+
+    def rerank
+      posts = Post.all.order("votes_count DESC")
+      hash = Hash[posts.map.with_index.to_a]
+      posts.each do |post|
+        post.rank = 1
+        post.rank += hash[post]
+        post.save
       end
     end
 end
