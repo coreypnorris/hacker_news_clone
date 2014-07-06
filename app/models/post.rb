@@ -9,8 +9,6 @@ class Post < ActiveRecord::Base
   has_many :votes, :as => :voteable
   has_many :comments, :as => :commentable
 
-  before_save :set_rank
-
   def post_type
     if question.strip.length == 0
       return "url"
@@ -66,8 +64,4 @@ class Post < ActiveRecord::Base
     parent_comments + child_comments
   end
 
-  private
-    def set_rank
-      self.rank += Post.all.count
-    end
 end
