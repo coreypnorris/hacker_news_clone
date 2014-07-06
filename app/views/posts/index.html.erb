@@ -1,6 +1,6 @@
 
   <% @posts.each do |post| %>
-    <%= post.rank %>
+    <span class="comhead"><%= post.rank %>.</span>
       <% if !current_user %>
         <%= link_to "", new_user_registration_path, class: "glyphicon glyphicon-chevron-up" %>
       <% elsif post.upvoted_by?(current_user) || post.posted_by?(current_user) %>
