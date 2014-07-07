@@ -64,4 +64,12 @@ class Post < ActiveRecord::Base
     parent_comments + child_comments
   end
 
+  def self.search(search)
+    if search.empty?
+      Post.none
+    else
+      Post.where('title LIKE ?', "%#{search}%")
+    end
+  end
+
 end
