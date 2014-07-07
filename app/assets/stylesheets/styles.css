@@ -22,3 +22,8 @@
 .nested_comments .nested_comments .nested_comments {
   margin-left: 0;
 }
+
+#score {
+  text-decoration: none;
+  cursor: text;
+}
