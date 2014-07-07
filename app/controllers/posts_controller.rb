@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
-  require 'will_paginate/array'
-
   def index
     if params[:user_id]
       @user = User.find_by_username(params[:user_id])
