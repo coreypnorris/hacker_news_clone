@@ -15,4 +15,5 @@ HackerNewsClone::Application.routes.draw do
   end
 
   root to: "posts#index"
+  match ":username", :to => "users#show", :via => :get
 end
