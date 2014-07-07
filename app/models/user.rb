@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :votes, :as => :voteable
-  has_many :comments, :as => :commentable
+  has_many :comments
 
   def to_param
     username
