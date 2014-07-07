@@ -7,6 +7,7 @@ class Vote < ActiveRecord::Base
   before_save :update_post_counters
   before_save :update_comment_counters
   before_save :rerank
+  before_save :increase_user_score
 
   private
     def update_post_counters
@@ -39,5 +40,11 @@ class Vote < ActiveRecord::Base
         post.rank += hash[post]
         post.save
       end
+    end
+
+    def increase_user_score
+      user = voteable.user
+      user.score += 1
+      user.save
     end
 end
