@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates_presence_of :username
+  validates_presence_of :score
 
   has_many :posts
   has_many :votes, :as => :voteable
