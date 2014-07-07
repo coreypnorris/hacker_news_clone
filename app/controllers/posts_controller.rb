@@ -1,10 +1,14 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
+  require 'will_paginate/array'
+
   def index
     if params[:user_id]
       @user = User.find_by_username(params[:user_id])
       @posts = @user.posts.order("rank ASC").page(params[:page]).per_page(30)
+    elsif params[:search]
+      @posts = Post.search(params[:search]).page(params[:page]).per_page(30)
     else
       @posts = Post.all.order("rank ASC").page(params[:page]).per_page(30)
     end
