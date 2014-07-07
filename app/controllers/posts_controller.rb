@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Your post has been submitted."
       redirect_to root_url
     else
-      flash[:alert] = "Something went wrong. Please try to save your post again."
+      flash[:error] = "Something went wrong. Please try to save your post again."
       render 'new'
     end
   end
