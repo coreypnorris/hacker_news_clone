@@ -1,0 +1,5 @@
+<p class="comhead">username: <%= @user.username %></p>
+<p class="comhead">created: <%= time_ago_in_words(@user.created_at) %> ago</p>
+<p class="comhead">score: <%= @user.score %></p>
+
+<p><%= link_to "submissions", user_posts_path(@user) %></p>
