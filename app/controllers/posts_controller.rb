@@ -2,7 +2,12 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @posts = Post.all.order("rank ASC").page(params[:page]).per_page(30)
+    if params[:user_id]
+      @user = User.find_by_username(params[:user_id])
+      @posts = @user.posts.order("rank ASC").page(params[:page]).per_page(30)
+    else
+      @posts = Post.all.order("rank ASC").page(params[:page]).per_page(30)
+    end
   end
 
   def new
