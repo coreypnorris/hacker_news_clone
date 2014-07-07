@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_filter :authenticate_user!, only: [:create]
 
   def index
-
+    @user = User.find_by_username(params[:user_id])
   end
 
   def new
@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
     @post = @parent.class == Post ? @parent : @parent.commentable
     @comment = Comment.build_from( @post, current_user.id, comment_params[:body] )
     if @comment.save
+      current_user.comments << @comment
       flash[:notice] = "Your comment has been submitted."
       if params[:post_id]
         redirect_to post_path(@parent)
