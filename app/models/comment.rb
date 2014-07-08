@@ -73,4 +73,12 @@ class Comment < ActiveRecord::Base
       return "#{votes.count} points"
     end
   end
+
+  def self.search(search)
+    if search.empty?
+      Comment.none
+    else
+      Comment.where('body LIKE ?', "%#{search}%")
+    end
+  end
 end
