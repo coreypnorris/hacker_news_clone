@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-md-4">
+    <%= render "/users/user", user: current_user %>
     <h2>edit profile</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
