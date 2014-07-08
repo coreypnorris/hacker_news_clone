@@ -63,7 +63,9 @@
               <%= text_field_tag :search, params[:search] %>
             </p>
           <% end %>
+          <%= label_tag :posts, "Posts", class: :comhead %>
           <%= radio_button_tag :radio, "posts", checked = true %>
+          <%= label_tag :comments, "Comments", class: :comhead %>
           <%= radio_button_tag :radio, "comments" %>
         </div>
         <br>
