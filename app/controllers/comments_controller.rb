@@ -2,8 +2,12 @@ class CommentsController < ApplicationController
   before_filter :authenticate_user!, only: [:create]
 
   def index
-    @user = User.find_by_username(params[:user_id])
-    @comments = @user.comments.order("votes_count DESC").page(params[:page]).per_page(10)
+    if params[:search]
+      @comments = Comment.search(params[:search]).page(params[:page]).per_page(10)
+    else
+      @user = User.find_by_username(params[:user_id])
+      @comments = @user.comments.order("votes_count DESC").page(params[:page]).per_page(10)
+    end
   end
 
   def new
