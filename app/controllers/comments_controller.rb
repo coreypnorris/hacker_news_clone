@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
   def index
     @user = User.find_by_username(params[:user_id])
+    @comments = @user.comments.order("votes_count DESC").page(params[:page]).per_page(10)
   end
 
   def new
