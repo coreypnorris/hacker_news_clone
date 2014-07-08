@@ -57,17 +57,30 @@
       <div class="container">
         <hr />
         <div class="text-center">
-          <%= form_tag posts_path, :method => 'get' do %>
+          <%= form_tag posts_path, :method => 'get', :id => 'search_form' do %>
             <p>
               <%= label_tag :search, "Search: ", class: :comhead %>
               <%= text_field_tag :search, params[:search] %>
             </p>
           <% end %>
+          <%= radio_button_tag :radio, "posts", checked = true %>
+          <%= radio_button_tag :radio, "comments" %>
         </div>
         <br>
       </div>
     </div>
   </footer>
+
+  <script type="text/javascript">
+    $("#radio_posts").change(function() {
+      var action = $(this).val() == "posts" ? "posts" : "comments";
+      $("#search_form").attr("action", "/" + action);
+    });
+    $("#radio_comments").change(function() {
+      var action = $(this).val() == "comments" ? "comments" : "posts";
+      $("#search_form").attr("action", "/" + action);
+    });
+  </script>
 
 </body>
 </html>
