@@ -2,5 +2,5 @@
 <p class="comhead">created: <%= time_ago_in_words(user.created_at) %> ago</p>
 <p class="comhead">score: <%= user.score %></p>
 
-<p><%= link_to "submissions", user_posts_path(user) %></p>
-<p><%= link_to "comments", user_comments_path(user) %></p>
+<p><u><%= link_to "submissions", user_posts_path(user) %></u></p>
+<p><u><%= link_to "comments", user_comments_path(user) %></u></p>
