@@ -6,14 +6,14 @@ HackerNewsClone::Application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  resources :comments, only: [:index, :new, :create, :show] do
+    resources :votes, only: [:new, :create]
+    resources :comments, only: [:new, :create]
+  end
+
   resources :users, :path => '', only: [:show] do
     resources :posts
     resources :comments, only: [:index]
-  end
-
-  resources :comments, only: [:new, :create, :show] do
-    resources :votes, only: [:new, :create]
-    resources :comments, only: [:new, :create]
   end
 
   root to: "posts#index"
