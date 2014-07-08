@@ -12,6 +12,7 @@ joe = User.create(:username => "joe", :email => "joe@example.com", :password => 
 leona = User.create(:username => "leona", :email => "leona@example.com", :password => 'foobarbaz', :password_confirmation => 'foobarbaz')
 mai = User.create(:username => "mai", :email => "mai@example.com", :password => 'foobarbaz', :password_confirmation => 'foobarbaz')
 yuri = User.create(:username => "yuri", :email => "yuri@example.com", :password => 'foobarbaz', :password_confirmation => 'foobarbaz')
+king = User.create(:username => "king", :email => "king@example.com", :password => 'foobarbaz', :password_confirmation => 'foobarbaz')
 
 google = Post.create(:title => "google", :url => "https://www.google.com/", :question => "", :user_id => 1)
 Post.create(:title => "yahoo", :url => "https://www.yahoo.com/", :question => "", :user_id => 2)
@@ -26,6 +27,7 @@ Post.create(:title => "Help Joe", :question => "Lorem ipsum dolor sit amet, cons
 Post.create(:title => "Help Leona", :question => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", :url => "", :user_id => 4)
 Post.create(:title => "Help Mai", :question => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", :url => "", :user_id => 5)
 Post.create(:title => "Help Yuri", :question => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", :url => "", :user_id => 6)
+help_king = Post.create(:title => "Help King", :question => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", :url => "", :user_id => 7)
 
 Comment.build_from( google, andy.id, "My name is Andy" ).save
 Comment.build_from( google, terry.id, "My name is Terry" ).save
@@ -53,3 +55,7 @@ Comment.build_from( help_andy, joe.id, "My name is Joe" ).save
 Comment.build_from( help_andy, leona.id, "My name is Leona" ).save
 Comment.build_from( help_andy, mai.id, "My name is Mai" ).save
 Comment.build_from( help_andy, yuri.id, "My name is Yuri" ).save
+
+30.times do
+  Comment.build_from( help_king, king.id, "My name is King" ).save
+end
