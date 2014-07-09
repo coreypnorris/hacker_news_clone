@@ -8,6 +8,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :votes, :as => :voteable
   has_many :comments, :as => :commentable
+  before_create :set_rank
 
   def post_type
     if question.strip.length == 0
@@ -70,6 +71,10 @@ class Post < ActiveRecord::Base
     else
       Post.where('title LIKE ?', "%#{search}%")
     end
+  end
+
+  def set_rank
+    self.rank += Post.all.length
   end
 
 end
