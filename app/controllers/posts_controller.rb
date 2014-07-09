@@ -18,7 +18,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new post_params
-    @post.rank += Post.all.length
     if @post.save
       current_user.posts << @post
       flash[:notice] = "Your post has been submitted."
